@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel | Elisete Perfumaria</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <h1>ELISETE PERFUMARIA<span>.</span></h1>
+
+        <div class="topbar-actions">
+            <a href="index.html">Ver loja</a>
+            <button id="logout-button">Sair</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <nav class="dashboard-tabs">
+            <button type="button" id="tab-orders" class="tab-button active">
+                Pedidos
+            </button>
+
+            <button type="button" id="tab-products" class="tab-button">
+                Produtos
+            </button>
+        </nav>
+
+        <!-- ABA PEDIDOS -->
+        <section id="orders-panel" class="tab-panel">
+
+            <div class="section-title">
+                <p>PEDIDOS DA LOJA</p>
+                <h2>Gerenciamento de pedidos</h2>
+            </div>
+
+            <div id="orders-list">
+                Carregando pedidos...
+            </div>
+
+        </section>
+
+        <!-- ABA PRODUTOS -->
+        <section id="products-panel" class="tab-panel" hidden>
+
+            <section class="heading">
+                <div>
+                    <p>ADMINISTRAÇÃO</p>
+                    <h2>Gerenciar produtos</h2>
+                </div>
+
+                <button id="new-product-button">+ Novo perfume</button>
+            </section>
+
+            <section id="product-form-section" hidden>
+                <h3 id="form-title">Cadastrar perfume</h3>
+
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
+
+                    <label for="product-name">Nome</label>
+                    <input type="text" id="product-name" required>
+
+                    <label for="product-category">Categoria</label>
+                    <select id="product-category" required>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Unissex">Unissex</option>
+                    </select>
+
+                    <label for="product-description">Descrição</label>
+                    <textarea id="product-description"></textarea>
+
+                    <label for="product-price">Preço (R$)</label>
+                    <input type="number" id="product-price" min="0" step="0.01" required>
+
+                    <div class="form-group">
+                        <label for="product-stock">Quantidade em estoque</label>
+                        <input type="number" id="product-stock" min="0" step="1" value="0" required>
+                    </div>
+
+                    <label for="product-image">Foto do perfume</label>
+                    <input
+                        type="file"
+                        id="product-image"
+                        accept="image/png, image/jpeg, image/webp"
+                    >
+
+                    <p class="image-hint">
+                        Escolha uma foto da galeria do seu dispositivo.
+                    </p>
+
+                    <div class="image-preview-container">
+                        <img id="image-preview" src="" alt="Prévia do perfume" hidden>
+                        <p id="preview-placeholder">
+                            A prévia da foto aparecerá aqui.
+                        </p>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="save-button">Salvar perfume</button>
+                        <button type="button" id="cancel-button">Cancelar</button>
+                    </div>
+
+                    <p id="form-message"></p>
+                </form>
+            </section>
+
+            <section class="products-section">
+                <h3>Produtos cadastrados</h3>
+                <div id="products-list">Carregando produtos...</div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="dashboard.js"></script>
+
+</body>
+</html>

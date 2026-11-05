@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elisete Perfumaria</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <a href="#inicio" class="logo">
+        ELISETE PERFUMARIA<span>.</span>
+    </a>
+
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#sobre">Sobre</a>
+    </nav>
+
+    <button class="cart-button" onclick="abrirCarrinho()">
+        🛒 Carrinho
+        <span id="cart-count">0</span>
+    </button>
+</header>
+
+<main>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <span class="subtitle">SUA ESSÊNCIA, SEU ESTILO</span>
+
+            <h1>Uma fragrância para marcar sua presença.</h1>
+
+            <p>
+                Descubra perfumes que traduzem personalidade,
+                elegância e sofisticação.
+            </p>
+
+            <a href="#catalogo" class="hero-button">
+                Explorar catálogo
+            </a>
+        </div>
+    </section>
+
+    <section class="catalog" id="catalogo">
+
+        <div class="section-heading">
+            <span class="subtitle">NOSSA COLEÇÃO</span>
+            <h2>Perfumes em destaque</h2>
+            <p>Encontre a fragrância que combina com você.</p>
+        </div>
+
+        <div id="products" class="products-grid"></div>
+
+    </section>
+
+</main>
+
+<footer id="sobre">
+    <div class="logo">ELISETE PERFUMARIA<span>.</span></div>
+    <p>Fragrâncias que deixam sua marca.</p>
+    <small>© 2026 Elisete Perfumaria. Todos os direitos reservados.</small>
+</footer>
+
+<!-- CARRINHO -->
+
+<!-- CARRINHO -->
+
+<div class="cart-overlay" id="cart-overlay" onclick="fecharCarrinho(event)">
+
+    <div class="cart-modal" onclick="event.stopPropagation()">
+
+        <div class="cart-header">
+            <div>
+                <span class="subtitle">ELISETE PERFUMARIA</span>
+                <h2>Meu carrinho</h2>
+                <p>Revise seus produtos antes de finalizar.</p>
+            </div>
+
+            <button class="close-cart" onclick="fecharCarrinho()">
+                &times;
+            </button>
+        </div>
+
+        <!-- PRODUTOS -->
+        <div id="cart-items" class="cart-items"></div>
+
+        <div class="cart-footer">
+
+            <!-- DADOS DO CLIENTE -->
+            <section class="customer-data">
+
+                <h3>Seus dados</h3>
+                <p>Precisamos dessas informações para confirmar seu pedido.</p>
+
+                <div class="form-group">
+                    <label for="customer-name">Nome completo</label>
+                    <input
+                        type="text"
+                        id="customer-name"
+                        placeholder="Digite seu nome completo"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-phone">WhatsApp para contato</label>
+                    <input
+                        type="tel"
+                        id="customer-phone"
+                        placeholder="(99) 99999-9999"
+                        required
+                    >
+                </div>
+
+            </section>
+
+            <!-- CUPOM -->
+            <section class="coupon-area">
+
+                <label for="coupon-code">Cupom de desconto</label>
+
+                <div class="coupon-input">
+                    <input
+                        type="text"
+                        id="coupon-code"
+                        placeholder="Digite seu cupom"
+                    >
+
+                    <button type="button" onclick="aplicarCupom()">
+                        Aplicar
+                    </button>
+                </div>
+
+                <p id="coupon-message"></p>
+
+            </section>
+
+            <!-- RESUMO -->
+            <section class="cart-summary">
+
+                <div class="summary-line">
+                    <span>Subtotal</span>
+                    <strong id="cart-subtotal">R$ 0,00</strong>
+                </div>
+
+                <div class="summary-line">
+                    <span>Desconto</span>
+                    <strong id="cart-discount">R$ 0,00</strong>
+                </div>
+
+                <div class="cart-total">
+                    <span>Total do pedido</span>
+                    <strong id="cart-total">R$ 0,00</strong>
+                </div>
+
+            </section>
+
+            <!-- FINALIZAR -->
+            <button
+                class="whatsapp-button"
+                onclick="finalizarWhatsApp()"
+                disabled
+            >
+                Finalizar pedido pelo WhatsApp
+            </button>
+
+            <p class="cart-security">
+                Seu pedido será enviado para confirmação pelo WhatsApp.
+            </p>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- CONEXÃO COM SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
+<!-- SCRIPT PRINCIPAL DA LOJA -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
