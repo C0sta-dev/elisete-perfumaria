@@ -2,7 +2,7 @@
 // CONFIGURAÇÕES
 // ==========================================
 
-const telefoneWhatsApp = "5599981570313";
+const telefoneWhatsApp = "5599981062366";
 
 const cupons = {
   ELISETE10: 10,
