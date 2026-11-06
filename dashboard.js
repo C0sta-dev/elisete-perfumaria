@@ -1,5 +1,8 @@
 
-const ADMIN_UID = "1e0558dc-839f-4c35-b384-6ae80fb69228";
+const ADMIN_UIDS = [
+    "1e0558dc-839f-4c35-b384-6ae80fb69228",
+    "ac1de3b3-fefb-45be-a544-27c90c039357"
+];
 
 // ELEMENTOS
 const productForm = document.getElementById("product-form");
@@ -40,7 +43,11 @@ tabProducts.addEventListener("click", () => abrirAba("products"));
 async function verificarAdministrador() {
     const { data, error } = await supabaseClient.auth.getUser();
 
-    if (error || !data.user || data.user.id !== ADMIN_UID) {
+    if (
+        error ||
+        !data.user ||
+        !ADMIN_UIDS.includes(data.user.id)
+    ) {
         await supabaseClient.auth.signOut();
         window.location.href = "admin.html";
         return false;
