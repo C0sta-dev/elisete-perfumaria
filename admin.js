@@ -1,5 +1,7 @@
-
-const ADMIN_UID = "1e0558dc-839f-4c35-b384-6ae80fb69228";
+const ADMIN_UIDS = [
+    "1e0558dc-839f-4c35-b384-6ae80fb69228",
+    "ac1de3b3-fefb-45be-a544-27c90c039357"
+];
 
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-button");
@@ -25,11 +27,12 @@ loginForm.addEventListener("submit", async function(event) {
             throw error;
         }
 
-        // Verificar se a conta é o administrador autorizado
-        if (data.user.id !== ADMIN_UID) {
+        if (!data.user || !ADMIN_UIDS.includes(data.user.id)) {
             await supabaseClient.auth.signOut();
 
-            throw new Error("Esta conta não tem autorização para acessar o painel.");
+            throw new Error(
+                "Esta conta não tem autorização para acessar o painel."
+            );
         }
 
         loginMessage.style.color = "green";
